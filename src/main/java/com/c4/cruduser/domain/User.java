@@ -23,4 +23,12 @@ public class User {
   @NotBlank
   @Column(nullable = false, length = 32)
   @EqualsAndHashCode.Exclude private String password;
+
+  public User() {
+  }
+
+  public User(String email, String password) {
+    this.email = email;
+    this.password = password;
+  }
 }
