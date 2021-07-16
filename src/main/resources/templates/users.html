@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>C4 - CRUD USERS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Usuarios</h1>
+    <table>
+      <thead>
+      <th>ID</th>
+      <th>EMAIL</th>
+      <th>PASSWORD</th>
+      </thead>
+      <tbody>
+        <tr th:each="user: ${userList}">
+          <td th:text="${user.id}" />
+          <td th:text="${user.email}" />
+          <td th:text="${user.password}" />
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -19,14 +19,14 @@ public class UserController {
   @GetMapping(path = "/users")
   public String getAllUsers(Model model) {
     List<User> userList = userService.findAll();
-    model.addAttribute(userList);
+    model.addAttribute("userList", userList);
     return "users";
   }
   
   @GetMapping(path = "/{id}")
   public String getCarById(@PathVariable Long id, Model model) {
     User user = userService.findById(id);
-    model.addAttribute(user);
+    model.addAttribute("user", user);
     return "user";
   }
 }
