@@ -4,22 +4,45 @@
     <title>C4 - CRUD USERS</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      function updateUser(id) {
+        alert("actualizar " + id);
+      }
+      
+      function deleteUser(id) {
+        alert("Estas seguro de eliminar al Usuario? ");
+        
+      }
+    </script>
+    
   </head>
   <body>
     <h1>Usuarios</h1>
-    <table>
-      <thead>
-      <th>ID</th>
-      <th>EMAIL</th>
-      <th>PASSWORD</th>
-      </thead>
-      <tbody>
-        <tr th:each="user: ${userList}">
-          <td th:text="${user.id}" />
-          <td th:text="${user.email}" />
-          <td th:text="${user.password}" />
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <table>
+        <thead>
+        <th>ID</th>
+        <th>EMAIL</th>
+        <th>PASSWORD</th>
+        <th>ACTIONS</th>
+        </thead>
+        <tbody>
+          <tr th:each="user: ${userList}">
+            <td th:text="${user.id}" />
+            <td th:text="${user.email}" />
+            <td th:text="${user.password}" />
+            <td>
+              <a th:href="@{/edit/{id}(id=${user.id})}">Update</a>
+              <a th:href="@{/delete/{id}(id=${user.id})}">Delete</a>
+  <!--            <button th:onclick="'javascript:updateUser(' + ${user.id} + ');'">Update</button>
+              <button th:onclick="'javascript:deleteUser(' + ${user.id} + ');'">Delete</button>-->
+              <!--th:onclick="'javascript:dataSearchAjax1(\'' + ${result.getString('type')} +'\',\''+ ${result.getString('name')} + '\');'"-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><a href="/signup">Add a new user</a></p>
   </body>
 </html>

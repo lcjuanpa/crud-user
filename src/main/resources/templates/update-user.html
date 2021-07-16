@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div>
+      <form action="#" 
+        th:action="@{/update/{id}(id=${user.id})}" 
+        th:object="${user}" 
+        method="post">
+          <label for="email">Email</label>
+          <input type="text" th:field="*{email}" id="email" placeholder="Email">
+          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+          
+          <label for="password">Password</label>
+          <input type="password" th:field="*{password}" id="password" placeholder="Contrasena">
+          <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+          
+          <input type="submit" value="Update User">   
+      </form>
+    </div>
+  </body>
+</html>

@@ -23,10 +23,36 @@ public class UserController {
     return "users";
   }
   
-  @GetMapping(path = "/{id}")
-  public String getCarById(@PathVariable Long id, Model model) {
-    User user = userService.findById(id);
-    model.addAttribute("user", user);
-    return "user";
+  @GetMapping("/signup")
+  public String showSignUpForm(User user) {
+    return "add-user";
+  }
+
+  @PostMapping("/adduser")
+  public String addUser(@Valid User user, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+      return "add-user";
+    }
+
+    userService.create(user);
+    return "redirect:/index";
+  }
+  
+  @PostMapping("/update/{id}")
+  public String updateUser(@PathVariable("id") long id, @Valid User user,
+          BindingResult result, Model model) {
+    if (result.hasErrors()) {
+      user.setId(id);
+      return "update-user";
+    }
+
+    userService.update(user, id);
+    return "redirect:/index";
+  }
+
+  @GetMapping("/delete/{id}")
+  public String deleteUser(@PathVariable("id") long id, Model model) {
+    userService.deleteById(id);
+    return "redirect:/index";
   }
 }
