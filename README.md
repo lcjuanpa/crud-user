@@ -4,8 +4,8 @@
 Realiza tareas simples de CRUD utilizando Thymeleaf como Framework de Vistas.
 
 <h3>Requerimientos</h3>
-- JDK v8+
-- Maven v3+
+- JDK v8+<br>
+- Maven v3+<br>
 
 <h3>Como ejecutar la aplicacion</h3>
 1. Descargue el proyecto<br>
